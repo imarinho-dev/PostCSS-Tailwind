@@ -80,3 +80,24 @@ For production we run.
 ```
 npm run build:css
 ```
+
+For the smallest possible production build, I recommend minifying your CSS with a tool like cssnano.
+
+```
+npm i -D cssnano
+```
+
+Add 'cssnano' to the end of your plugin list in postcss.config.js file.
+
+```
+module.exports = {
+  plugins: {
+    "postcss-import": {},
+    tailwindcss: {},
+    autoprefixer: {},
+    cssnano: {
+      preset: "default",
+    },
+  },
+};
+```
