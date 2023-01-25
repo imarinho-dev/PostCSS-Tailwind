@@ -2,6 +2,12 @@
 
 ## Basic PostCSS + Tailwind configuration
 
+Lets make our project folder and create package.json
+```
+mkdir project-folder
+cd project
+npm init -y
+```
 To use PostCSS from your command-line interface or with npm scripts there is postcss-cli.
 
 ```
@@ -17,6 +23,10 @@ npx tailwindcss init
 Add Tailwind and autoprefixer to your PostCSS configuration postcss.config.js file.
 
 ```
+touch postcss.config.js
+```
+
+```
 module.exports = {
   plugins: {
     tailwindcss: {},
@@ -29,15 +39,19 @@ Add the paths to all of your template files in your tailwind.config.js file.
 
 ```
 module.exports = {
-  content: ["./src/**/*.{html,js}"],
+  content: ["index.html"],
   theme: {
     extend: {},
   },
   plugins: [],
 }
 ```
+```
+mkdir -p src/css
+touch src/css/input.css
+```
 
-Add the Tailwind directives to your CSS
+Add the Tailwind directives to your input CSS
 
 ```
 @tailwind base;
@@ -55,17 +69,17 @@ Having the page reload automatically after changes to files can accelerate devel
 If you are a Linux user you must use a admin user as root or have permission to use 'sudo'
 
 ```
-npm install -g live-server
+sudo npm install -g live-server
 ```
 
 Now lets configure npm script
 
 ```
 "scripts": {
-    "build:css": "postcss src/main.css -o public/style.css",
-    "watch": "postcss src/main.css -o public/style.css -w",
-    "live-server": "live-server",
-    "dev": "npm-run-all --parallel watch live-server"
+    "build:css": "postcss src/css/input.css -o css/style.css",
+		"watch": "postcss src/css/input.css -o css/style.css -w",
+		"live-server": "live-server",
+		"dev": "npm-run-all --parallel watch live-server"
   },
 ```
 
